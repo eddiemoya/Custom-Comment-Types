@@ -32,11 +32,12 @@ require_once( CCT_PATH . 'classes/custom-comment-list-table.php');
 require_once( CCT_PATH . 'classes/custom-comment-admin-page.php');
 require_once( CCT_PATH . 'classes/comment-type.php');
       
-
-function print_pre($r){
-    echo '<pre>';
-    print_r($r);
-    echo '</pre>';
+if(!function_exists('print_pre')){
+    function print_pre($r){
+        echo '<pre>';
+        print_r($r);
+        echo '</pre>';
+    }
 }
 class WP_CCT {
     
