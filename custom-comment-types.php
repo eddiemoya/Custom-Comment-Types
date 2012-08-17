@@ -1,5 +1,5 @@
 <?php /*
-Plugin Name: Custom Comment Types
+Plugin Name*: Custom Comment Types
 Plugin URI: http://eddiemoya.com/
 Version: 1.0
 Description: Don't be trapped into a single comment type, create your own!
@@ -23,7 +23,7 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-define(CCT_PATH, plugin_dir_path(WP_PLUGIN_DIR . '/custom-comment-types/custom-comment-types.php'));
+define(CCT_PATH, plugin_dir_path(WP_PLUGIN_DIR . '/comment-types/custom-comment-types.php'));
 
 require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 require_once(ABSPATH . 'wp-admin/includes/class-wp-comments-list-table.php');
@@ -32,13 +32,13 @@ require_once( CCT_PATH . 'classes/custom-comment-list-table.php');
 require_once( CCT_PATH . 'classes/custom-comment-admin-page.php');
 require_once( CCT_PATH . 'classes/comment-type.php');
       
-if(!function_exists('print_pre')){
-    function print_pre($r){
-        echo '<pre>';
-        print_r($r);
-        echo '</pre>';
-    }
-}
+// if(!function_exists('print_pre')){
+//     function print_pre($r){
+//         echo '<pre>';
+//         print_r($r);
+//         echo '</pre>';
+//     }
+// }
 class WP_CCT {
     
     static public $types = array();
@@ -96,70 +96,71 @@ class WP_CCT {
 
 }
 WP_CCT::init();
-/**
- *
- * @param type $comment_type
- * @param type $args 
- */
-function register_comment_type($comment_type, $args){
-    WP_CCT::register_comment_type($comment_type, $args);
-}
 
-function cct_test() {
-    $args = array(
-        'labels' => array(
-            'name' => _x('Answers', 'post type general name'),
-            'singular_name' => _x('Answer', 'post type singular name'),
-            'add_new' => _x('Add New', 'answer'),
-            'add_new_item' => __('Add New Answer'),
-            'edit_item' => __('Edit Answer'),
-            'new_item' => __('New Answer'),
-            'all_items' => __('All Answers'),
-            'view_item' => __('View Answers'),
-            'search_items' => __('Search Answers'),
-            'not_found' => __('No answers found'),
-            'not_found_in_trash' => __('No answers found in Trash'),
-            'parent_item_colon' => 'Question:',
-            'menu_name' => 'Answer'
-        ),
-        'parent_domain' => 'post',
-        'parent_type' => 'question',
-        'capability' => 'administrator',
-        'menu_position' => 28
-    );
+// /**
+//  *
+//  * @param type $comment_type
+//  * @param type $args 
+//  */
+// function register_comment_type($comment_type, $args){
+//     WP_CCT::register_comment_type($comment_type, $args);
+// }
 
-    register_comment_type('answer', $args);
-}
+// function cct_test() {
+//     $args = array(
+//         'labels' => array(
+//             'name' => _x('Answers', 'post type general name'),
+//             'singular_name' => _x('Answer', 'post type singular name'),
+//             'add_new' => _x('Add New', 'answer'),
+//             'add_new_item' => __('Add New Answer'),
+//             'edit_item' => __('Edit Answer'),
+//             'new_item' => __('New Answer'),
+//             'all_items' => __('All Answers'),
+//             'view_item' => __('View Answers'),
+//             'search_items' => __('Search Answers'),
+//             'not_found' => __('No answers found'),
+//             'not_found_in_trash' => __('No answers found in Trash'),
+//             'parent_item_colon' => 'Question:',
+//             'menu_name' => 'Answer'
+//         ),
+//         'parent_domain' => 'post',
+//         'parent_type' => 'question',
+//         'capability' => 'administrator',
+//         'menu_position' => 28
+//     );
 
-add_action('init', 'cct_test');
+//     register_comment_type('answer', $args);
+// }
 
-function cct_flags() {
-    $args = array(
-        'labels' => array(
-            'name' => _x('Flags', 'post type general name'),
-            'singular_name' => _x('Flag', 'post type singular name'),
-            'add_new' => _x('Add New', 'flag'),
-            'add_new_item' => __('Add New Flag'),
-            'edit_item' => __('Edit Flag'),
-            'new_item' => __('New Flag'),
-            'all_items' => __('All Flags'),
-            'view_item' => __('View Flags'),
-            'search_items' => __('Search Flags'),
-            'not_found' => __('No flags found'),
-            'not_found_in_trash' => __('No flags found in Trash'),
-            'parent_item_colon' => 'Question:',
-            'menu_name' => 'Flags'
-        ),
-        'parent_domain' => 'post',
-        'parent_type' => 'question',
-        'capability' => 'administrator',
-        'menu_position' => 29
-    );
+// add_action('init', 'cct_test');
 
-    register_comment_type('flag', $args);
-}
+// function cct_flags() {
+//     $args = array(
+//         'labels' => array(
+//             'name' => _x('Flags', 'post type general name'),
+//             'singular_name' => _x('Flag', 'post type singular name'),
+//             'add_new' => _x('Add New', 'flag'),
+//             'add_new_item' => __('Add New Flag'),
+//             'edit_item' => __('Edit Flag'),
+//             'new_item' => __('New Flag'),
+//             'all_items' => __('All Flags'),
+//             'view_item' => __('View Flags'),
+//             'search_items' => __('Search Flags'),
+//             'not_found' => __('No flags found'),
+//             'not_found_in_trash' => __('No flags found in Trash'),
+//             'parent_item_colon' => 'Question:',
+//             'menu_name' => 'Flags'
+//         ),
+//         'parent_domain' => 'post',
+//         'parent_type' => 'question',
+//         'capability' => 'administrator',
+//         'menu_position' => 29
+//     );
 
-add_action('init', 'cct_flags');
+//     register_comment_type('flag', $args);
+// }
+
+// add_action('init', 'cct_flags');
 
 /************************** CREATE A PACKAGE CLASS *****************************
  *******************************************************************************
@@ -803,37 +804,37 @@ function column_comment( $comment ) {
 
 
 
-    function register_questions_type() {
-        $labels = array(
-            'name' => _x('Questions', 'post type general name'),
-            'singular_name' => _x('Questions', 'post type singular name'),
-            'add_new' => _x('Add New', 'question'),
-            'add_new_item' => __('Add New Question'),
-            'edit_item' => __('Edit Question'),
-            'new_item' => __('New Question'),
-            'all_items' => __('All Questions'),
-            'view_item' => __('View Question'),
-            'search_items' => __('Search Questions'),
-            'not_found' => __('No questions found'),
-            'not_found_in_trash' => __('No questions found in Trash'),
-            'parent_item_colon' => '',
-            'menu_name' => 'Questions'
-        );
-        $args = array(
-            'labels' => $labels,
-            'public' => true,
-            'publicly_queryable' => true,
-            'show_ui' => true,
-            'show_in_menu' => true,
-            'query_var' => false,
-            'rewrite' => false,
-            'capability_type' => 'post',
-            'has_archive' => false,
-            'hierarchical' => false,
-            'menu_position' => null,
-            'supports' => array('title', 'editor', 'author', 'comments')
-        );
-        register_post_type('question', $args);
-    }
+    // function register_questions_type() {
+    //     $labels = array(
+    //         'name' => _x('Questions', 'post type general name'),
+    //         'singular_name' => _x('Questions', 'post type singular name'),
+    //         'add_new' => _x('Add New', 'question'),
+    //         'add_new_item' => __('Add New Question'),
+    //         'edit_item' => __('Edit Question'),
+    //         'new_item' => __('New Question'),
+    //         'all_items' => __('All Questions'),
+    //         'view_item' => __('View Question'),
+    //         'search_items' => __('Search Questions'),
+    //         'not_found' => __('No questions found'),
+    //         'not_found_in_trash' => __('No questions found in Trash'),
+    //         'parent_item_colon' => '',
+    //         'menu_name' => 'Questions'
+    //     );
+    //     $args = array(
+    //         'labels' => $labels,
+    //         'public' => true,
+    //         'publicly_queryable' => true,
+    //         'show_ui' => true,
+    //         'show_in_menu' => true,
+    //         'query_var' => false,
+    //         'rewrite' => false,
+    //         'capability_type' => 'post',
+    //         'has_archive' => false,
+    //         'hierarchical' => false,
+    //         'menu_position' => null,
+    //         'supports' => array('title', 'editor', 'author', 'comments')
+    //     );
+    //     register_post_type('question', $args);
+    // }
     
-    add_action( 'init', 'register_questions_type' );
+    // add_action( 'init', 'register_questions_type' );
